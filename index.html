@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SoundFilm</title>
+  <link rel="shortcut icon" href="assets/images/mngrm-black.png">
+  <link href="css/materialize.min.css" rel="stylesheet" type="text/css">
+  <link href="css/material-design-iconic-font.min.css" rel="stylesheet">
+  <link href="css/materialize.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+  <link href="css/index.css" rel="stylesheet" type="text/css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/superagent/3.8.2/superagent.min.js"></script>
+</head>
+
+<body>
+  <!--SPLASH INICIO-->
+  <div id="splash-container" class="container-fluid">
+    <section id="splash" class="section">
+      <div class="row center mb-0">
+        <div class="col s-10 offset-s1 offset-m3 offset-l5">
+          <img id="intro-logo" class="responsive-img " src="assets/images/logo-black.png" alt="" />
+        </div>
+      </div>
+    </section>
+  </div>
+  <!--/SPLASH INICIO-->
+  <!--INDEX SECTION-->
+  <div id="index-container" class="container-fluid hide">
+    <section id="index" class="section">
+      <div class="row center mb-0">
+        <div class="col s-11 offset-s1 offset-m3 offset-l5">
+          <img id="index-logo" src="assets/images/logo-yellow-s.png" alt="" />
+        </div>
+      </div>
+      <div id="index-slogan" class="splash-text mb-40">
+        <div class="row mt-0 mb-40">
+          <div class="col s-10 offset-s1 offset-m3 offset-l5">
+            <h4 class="text-red bolder text-shadow mt-0">MUSIC & MOVIES</h4>
+            <h5 class="text-red bolder text-shadow mt-0 mb-40">for your life</h5>
+            <div class="row mt-40">
+              <a id="login-btn" class="btn btn-block btn-theme1 modal-trigger" href="#modal-login">Login</a>
+            </div>
+            <div class="row mt-20">
+              <a id="signup-btn" class="btn btn-block btn-theme3 modal-trigger" href="#modal-signup">Sign Up</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!--/INDEX SECTION-->
+  <!--NAV-BAR-->
+  <nav id="site-nav" class="hide">
+    <!--DESKTOP MENU-->
+    <div id="desktop-nav" class="container">
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo nav-logo" class="right">
+          <img id="nav-logo" src="assets/images/horizontal-white.png" alt="logo-hwhite">
+        </a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse right">
+          <i class=" fa fa-bars fa-2x "></i>
+        </a>
+        <ul class="right hide-on-med-and-down">
+          <li>
+            <a id="home-btn">
+              <i class="fa fa-home "></i>
+            </a>
+          </li>
+          <li>
+            <a id="collections-btn">
+              <i class="fa fa-list"></i>
+            </a>
+          </li>
+          <li>
+            <a id="settings-btn">
+              <i class="fa fa-gear"></i>
+            </a>
+          </li>
+          <li>
+            <a id="help-btn">
+              <i class="fa fa-question"></i>
+            </a>
+          </li>
+          <li>
+            <a id="logout-btn" class="btn btn-flat text-white ">Logout</a>
+          </li>
+        </ul>
+        <!--/DESKTOP MENU-->
+        <!--MOBILE MENU-->
+        <ul id="mobile-demo" class="side-nav col s1">
+          <li>
+            <a id="home-btn">Home
+              <i class="fa fa-home "></i>
+            </a>
+          </li>
+          <li>
+            <a id="collections-btn">Collections
+              <i class="fa fa-list select"></i>
+            </a>
+          </li>
+          <li>
+            <a id="settings-btn">Settings
+              <i class="fa fa-gear"></i>
+            </a>
+          </li>
+          <li>
+            <a id="help-btn">Help
+              <i class="fa fa-question"></i>
+            </a>
+          </li>
+          <li>
+            <a id="logout-btn" class="btn btn-flat text-white logout-btn">Logout</a>
+          </li>
+        </ul>
+        <!--/MOBILE MENU-->
+      </div>
+    </div>
+  </nav>
+  <!--/NAV-BAR-->
+  <!--MAIN-->
+  <!--HOME SECTION-->
+  <section id="home-section" class="section hide">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col s-10 offset-s1">
+          <!-- home carrousel -->
+        </div>
+      </div>
+    </div> -->
+    <!--search bar-->
+    <div class="row">
+      <div id="movie-search-box" class="col s12 l6 search-box">
+        <img src="assets/images/dummy-movies.jpg" class="searcher-img responsive-img " alt="">
+        <div id="movie-searcher" class="searcher">
+          <div class="input-field center">
+            <p class="flow-text flow-text text-white mb-20">Search By Movie</p>
+            <input class="text-white" id="search-by-movie" type="text" placeholder="  Looking for..." autocomplete="on">
+            <button id="search-movie" class="btn btn-flat btn-theme3 mb-20">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+        </div>
+        <!--results by movie (dynamic)-->
+        <div id="movies-results-container" class="container mt-40 mb-40 hide">
+          <div id="movies-result-list" class="row">
+            <div  id="movies-result" class="col s10 offset-s1">
+              <a id="movie-result-title" class="search-result btn btn-flat modal-trigger flow-text" href="#movie-info">result-movie</a>
+              <a id="movie-result-title" class="search-result btn btn-flat modal-trigger flow-text" href="#movie-info">result-movie</a>
+              <!--dummy-->
+              <a id="movie-result-title" class="search-result btn btn-flat modal-trigger flow-text" href="#movie-info">result-movie</a>
+              <!--dummy-->
+              <a id="movie-result-title" class="search-result btn btn-flat modal-trigger flow-text" href="#movie-info">result-movie</a>
+              <!--dummy-->
+              <a id="movie-result-title" class="search-result btn btn-flat modal-trigger flow-text" href="#movie-info">result-movie</a>
+              <!--dummy-->
+            </div>
+          </div>
+        </div>
+        <!--/results by movie-->
+      </div>
+      <!--/search by movie-->
+      <!--search by -->
+      <div id="artist-search-box" class="col s12 l6 search-box">
+        <img src="assets/images/dummy-music.jpg" class="searcher-im responsive-img " alt="">
+        <div id="album-searcher" class="searcher ">
+          <div class="input-field center">
+            <p class="flow-text flow-text text-white mb-20">Search By Artist</p>
+            <input id="searcher-by-artist" type="text" placeholder="  Looking for..." autocomplete="on">
+            <button id="search-album" class="btn btn-flat btn-theme3 mb-20">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+        </div>
+        <!--results by artist (dynamic)-->
+        <div id="albums-container" class="container mt-40 mb-40 hide">
+          <div id="albums-result-list" class="row">
+            <div class="col s10 offset-s1">
+              <a id="album-result-title" class="search-result btn btn-flat modal-trigger flow-text" href="#album-info">result-album</a>
+              <a id="album-result-title" class="search-result btn btn-flat modal-trigger flow-text" href="#album-info">result-album</a>
+              <!--dummy-->
+              <a id="album-result-title" class="search-result btn btn-flat modal-trigger flow-text" href="#album-info">result-album</a>-->
+              <!--dummy-->
+              <a id="album-result-title" class="search-result btn btn-flat modal-trigger flow-text" href="#album-info">result-album</a>-->
+              <!--dummy-->
+              <a id="album-result-title" class="search-result btn btn-flat modal-trigger flow-text" href="#album-info">result-album</a>-->
+              <!--dummy-->
+            </div>
+          </div>
+        </div>
+        <!--/results by artist-->
+      </div>
+      <!--search by -->
+    </div>
+  </section>
+  <!--/search bar-->
+  <!--/HOME SECTION-->
+  <!--MOVIES COLLECTION SECTION-->
+  <section id="movies-section" class="section hide">
+    <h3 class="collection-title text-yellow">Your Movies</h3>
+    <div class="container">
+      <div class="row">
+        <div id="movies-gallery">
+          <a class="card poster-pin btn btn-flat modal-trigger" href="movie-info">
+            <!--dynamic-->
+            <img id="pin-poster" class="responsive-img" src="assets/images/main.jpg" alt="poster" />
+            <!--dummy-->
+          </a>
+          <a class="card poster-pin btn btn-flat modal-trigger" href="movie-info">
+            <!--dynamic-->
+            <img id="pin-poster" class="responsive-img" src="assets/images/main.jpg" alt="poster" />
+            <!--dummy-->
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/movie section-->
+  <!--/MOVIES COLLECTION SECTION-->
+  <!--ALBUMS COLLECTION SECTION-->
+  <section id="albums-section" class="section hide">
+    <h3 class="collection-title text-yellow">Your Soundtracks</h3>
+    <div class="container">
+      <div class="row">
+        <div id="albums-gallery">
+          <a class="card poster-pin btn btn-flat modal-trigger" href="album-info">
+            <!--dynamic-->
+            <img id="pin-cover" class="responsive-img" src="assets/images/splash.jpg" alt="cover" />
+            <!--dummy-->
+          </a>
+          <a class="card poster-pin btn btn-flat modal-trigger" href="album-info">
+            <!--dynamic-->
+            <img id="pin-cover" class="responsive-img" src="assets/images/splash.jpg" alt="cover" />
+            <!--dummy-->
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/ALBUMS COLLECTION SECTION-->
+  <!--HELP SECTION-->
+  <section id="help-section" class="section hide">
+    <div class="container">
+      <div class="row">
+        <div class="col s-10 offset-s1">
+          <h3 class="faq-question text-yellow mb-40">FAQ</h3>
+          <div class="faq-item mt-40 mb-20">
+            <h5 class="text-red">How to add a movie or album to my collection?</h5>
+            <p class="faq-answer">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+              magna aliqua.
+              <br> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              <br> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+              <br> Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          </div>
+          <div class="faq-item mt-40 mb-20">
+            <h5 class="text-red">How to delete a movie or album to my collection?</h5>
+            <p class="faq-answer">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+              magna aliqua.
+              <br> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              <br> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+              <br> Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          </div>
+          <div class="faq-item mt-40 mb-20">
+            <h5 class="text-red">How to add/delete a collection?</h5>
+            <p class="faq-answer">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+              magna aliqua.
+              <br> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              <br> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+              <br> Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          </div>
+          <p class="text-white mt-40 mb-20">Don't you see your question or you have a suggestion? Please send us a message with your
+            <a id="feedback-btn" class="btn bt-flat modal-trigger"
+              href="#feedback">feedback</a> .</p>
+          <a href="#help-section">
+            <i class="fa fa-angle-up fa-2x text-red right mb-40"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/HELP SECTION-->
+  <!--USER SETTINGS SECTION-->
+  <section id="settings-section" class="section hide">
+    <div class="row center pb-40">
+      <div class="col s10 offset-s1">
+        <div id="user-data" class="card-panel pb-40">
+          <div class="row">
+            <h3 class="text-yellow mb-40 mb-40 left">Settings</h3>
+          </div>
+          <div class="row">
+            <label for="Username">Your username (required).</label>
+            <input type="text" name="username" value="">
+          </div>
+          <div class="row">
+            <label for="Email">Your email (required).</label>
+            <input type="text" name="email" value="">
+          </div>
+          <div class="row">
+            <label for="Password">Your password (required).</label>
+            <input type="text" name="password" value="">
+          </div>
+          <div class="row">
+            <label for="Confirm Password">Confirm your password</label>
+            <input type="text" name="confirm-password" value="">
+          </div>
+          <div class="row mb-40">
+            <i class=" btn btn-flat fa fa-edit fa-3x text-yellow right tooltiped" data-tooltip="edit"></i>
+            <i class=" btn btn-flat fa fa-save fa-3x text-yellow right tooltiped" data-tooltip="edit"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/USER SETTINGS SECTION-->
+  <!--TERMS SECTION-->
+  <section id="terms" class="modal">
+    <div class="modal-content">
+      <img id="terms-logo" src="assets/images/logo-black.png" alt="logo" />
+      <h5>Terms & Conditions</h5>
+      <p class="mt-20">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
+        sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <p class="mt-20">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
+        sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <p class="mt-20">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
+        sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <p class="mt-20">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
+        sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+    <h5 class="left mb-20">
+      <input type="checkbox" id="terms-agree" />
+      <label for="terms">I agree to
+        <a href="#modal-terms" class="btn modal-trigger btn-flat btn-theme-3 bolder">
+          <small class="text-aqua2">Terms of service</small>
+        </a>
+      </label>
+    </h5>
+    <a href="#!" class="modal-action modal-close right">
+      <i class=" responsive-imgfa fa-times" aria-hidden="true"></i>
+      <strong>Close</strong>
+    </a>
+  </section>
+  <!--/TERMS SECTION-->
+  <!--SPLASH LOGOUT-->
+  <section id="logout-splash">
+    <img src="" alt="">
+  </section>
+  <!--/SPLASH LOGOUT-->
+  <!--MODALS-->
+  <!--modal login-->
+  <section id="modal-login" class="modal">
+    <div class="row center">
+      <div class="col s1 offset-s1 mt-40">
+        <img id="login-logo" class="responsive-imag" src="assets/images/horizontal-black.png" alt="logo-black">
+      </div>
+    </div>
+    <div id="login-section" class="row center-align mt-40 ">
+      <div class="col s10 offset-s1">
+        <a id="login-fb" class="btn fb-btn hide-on-small-only social-sign">Login with Facebook</a>
+        <a id="login-fb" class="btn fb-btn hide-on-med-and-up">
+          <i class="fa fa-facebook"></i>&nbsp;Login</a>
+        <a id="login-spotify" class="btn sp-btn hide-on-small-only social-sign">Login with Spotify</a>
+        <a id="login-spotify" class="btn sp-btn hide-on-med-and-up">
+          <i class="fa fa-spotify"></i>&nbsp;Login</a>
+        <div class="col s10 offset-s1">
+        </div>
+        <div class="row center mt-20 mb-20">
+          <div class="col s10 offset-s1 ">
+            <label for="user-name">
+              <i class="fa fa-user"></i>&nbsp;User Name
+              <input type="text" name="username" />
+            </label>
+            <label for="user-password">
+              <i class="fa fa-lock"></i>&nbsp;Password
+              <input type="password" name="password" />
+            </label>
+          </div>
+          <a id="login-enter-btn" class="btn btn-theme3 waves-effect waves-light modal-close" href="#" type="text">Enter</a>
+        </div>
+        <div class="row mb-20">
+          <p class="center text-gray">Did you forget your password?
+            <a href="!#" class="btn btn-flat text-red bolder" id="recovery-btn">Recover it!</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="recovery-section" class="row center mb-40 hide">
+      <form action="" class="col s10 offset-s1 mt-40">
+        <div class="input-field col s10 offset-s1">
+          <input id="recovery-email" type="email" class="validate">
+          <label for="Password">
+            <i class="fa fa-lock" aria-hidden="true"></i>&nbsp; Email</label>
+        </div>
+        <button id="recover-btn" class="btn-flat  right">Recover&nbsp;
+          <i class="fa fa-send" aria-hidden="true"></i>
+        </button>
+      </form>
+    </div>
+  </section>
+  <!--/modal login-->
+  <!--moda signup-->
+  <section id="modal-signup" class="modal" data-view="10">
+    <div class="row center">
+      <div class="col s1 offset-s1 mt-40">
+        <img id="signup-logo" class="responsive-imag" src="assets/images/horizontal-black.png" alt="logo-black">
+      </div>
+    </div>
+    <div id="signup-section" class="row center-align mt-40  hide">
+      <div class="col s10 offset-s1">
+        <a id="signup-fb" class="btn btn-fb hide-on-small-only social-sign">Sign Up with Facebook</a>
+        <a id="signup-fb" class="btn btn-fb hide-on-med-and-up">
+          <i class="fa fa-facebook"></i>&nbsp;Sign Up</a>
+        <a id="signup-spotify" class="btn btn-tw hide-on-small-only social-sign">Sign Up with Spotify</a>
+        <a id="signup-spotify" class="btn btn-tw hide-on-med-and-up">
+          <i class="fa fa-spotify"></i>&nbsp;Sign Up</a>
+      </div>
+      <div class="row center mt-20 mb-20">
+        <div class="col s10 offset-s1 mt-40">
+          <label for="user-name">
+            <i class="fa fa-user"></i>&nbsp;User Name
+            <input type="text" name="username" id="signup-name" />
+          </label>
+          <label for="user-email">
+            <i class="fa fa-user"></i>&nbsp;Email
+            <input type="text" name="email" id="signup-email" />
+          </label>
+          <label for="user-password">
+            <i class="fa fa-lock"></i>&nbsp;Password
+            <input type="password" name="password" id="signup-password" />
+          </label>
+          <label for="user-confirm">
+            <i class="fa fa-lock"></i>&nbsp;Confirm your password
+            <input type="password" name="confirm" id="signup-password2" />
+          </label>
+        </div>
+        <div class="row">
+          <div class="col s10 offset-s1 mb-40">
+            <a id="signup-btn" class="btn btn-theme3 waves-effect waves-light" href="views/home.html" type="text">Register</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="confirmation-section" class="row center mb-40 hide">
+      <div class="col s10 offset-s1 mt-40">
+        <p>Thank you!</p>
+        <p>We'll send you an email with a confirmation.</p>
+        <p>Check it, and enjoy
+          <strong>SoundFilm</strong>,</p>
+      </div>
+      <button id="close-confirmation-btn" class="btn-flat  right">Close&nbsp;
+        <i class="fa fa-times" aria-hidden="true"></i>
+      </button>
+    </div>
+  </section>
+  <!--/modal signup-->
+  <!--modal movie info -->
+  <section id="movie-info" class="modal">
+    <div id="movie-info-container" class="row">
+      <div class="col s12 m10 offset-m1 ">
+        <div id="movie-info-card" class="card-panel ">
+          <div id="movie-info-details" class="card-content">
+            <h4 id="movie-title-modal" class="text-white">Movie Title</h4>
+            <div class="card-image">
+              <img id="poster-modal" src="assets/images/main.jpg" alt="movie-poster" class="responsive-img" />
+            </div>
+            <p id="movie-year-modal" class="text-white">
+              <span>Dato:</span>&nbsp;Movie Year</p>
+            <p id="movie-genre-modal" class="text-white">
+              <span>Dato:</span>&nbsp;Movie Genre</p>
+            <p id="movie-director-modal" class="text-white">
+              <span>Dato:</span>&nbsp;Movie Director</p>
+            <p id="movie-rate-modal" class="text-white">
+              <span>Dato:</span>&nbsp;Movie Rate</p>
+          </div>
+          <div id="movie-tagline" class="mt-20">Tagline: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua...</div>
+        </div>
+        <div id="movie-info-footer" class="mt-20">
+          <!-- <nav id="movie-info-nav" class="nav-bar"> -->
+          <a id="movie-soundtrack" class="btn btn-flat text-red movie-info-btn flow-text left">Album</a>
+          <a id="movie-homepage" class="btn btn-flat text-red movie-info-btn flow-tex left">Homepage</a>
+          <a id="add-movie" class="btn btn-flat text-red movie-info-btn flow-text left">Add to collection</a>
+          <!-- </nav> -->
+        </div>
+        <button id="close-movie-info-btn" class="btn-flat modal-close right">Close&nbsp;
+          <i class="fa fa-times" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </section>
+  <!--/modal smovie info-->
+  <!--modal soundtrack info-->
+  <section id="album-info" class="modal">
+    <div id="album-info-container" class="row">
+      <div class="col s12 m10 offset-m1 ">
+        <div id="album-info-card" class="card-panel ">
+          <div id="album-info-details" class="card-content">
+            <h4 id="album-title-modal" class="text-white">Album Title</h4>
+            <div class="card-image">
+              <img id="cover-modal" src="assets/images/main.jpg" alt="album-cover" class="responsive-img" />
+            </div>
+            <p id="album-year-modal" class="text-white">
+              <span>Dato:</span> &nbsp;Album Year*</p>
+            <p id="album-artist-modal" class="text-white">
+              <span>Dato:</span> &nbsp;Album Artist</p>
+            <p id="album-producer-modal" class="text-white">
+              <span>Dato:</span> &nbsp;Album Producer</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s10 offset-1">
+            <div id="album-tracklist" class="hide">
+              <!--hide-->
+              <ul id="tracklist">
+                <!--dynamic-->
+                <li id="album-item" class="album-item">
+                  <div class="row">
+                    <span id="track-number" class="number-track">#Track</span>
+                    <span id="track-name" class="name-track"> Track name</span>
+                  </div>
+                  <div class="row">
+                    <small>
+                      <span id="by" class="by">By</span>
+                      <span id="track-artist" class="artist-track"> Artist</span>
+                    </small>
+                    <!--dummy-->
+                  </div>
+                </li>
+                <li id="album-item" class="album-item">
+                  <div class="row">
+                    <span id="track-number" class="number-track">#Track</span>
+                    <span id="track-name" class="name-track"> Track name</span>
+                  </div>
+                  <div class="row">
+                    <small>
+                      <span id="by" class="by">By</span>
+                      <span id="track-artist" class="artist-track"> Artist</span>
+                    </small>
+                    <!--dummy-->
+                  </div>
+                </li>
+                <li id="album-item" class="album-item">
+                  <div class="row">
+                    <span id="track-number" class="number-track">#Track</span>
+                    <span id="track-name" class="name-track"> Track name</span>
+                  </div>
+                  <div class="row">
+                    <small>
+                      <span id="by" class="by">By</span>
+                      <span id="track-artist" class="artist-track"> Artist</span>
+                    </small>
+                    <!--dummy-->
+                  </div>
+                </li>
+                <li id="album-item" class="album-item">
+                  <div class="row">
+                    <span id="track-number" class="number-track">#Track</span>
+                    <span id="track-name" class="name-track"> Track name</span>
+                  </div>
+                  <div class="row">
+                    <small>
+                      <span id="by" class="by">By</span>
+                      <span id="track-artist" class="artist-track"> Artist</span>
+                    </small>
+                    <!--dummy-->
+                  </div>
+                </li>
+                <li id="album-item" class="album-item">
+                  <div class="row">
+                    <span id="track-number" class="number-track">#Track</span>
+                    <span id="track-name" class="name-track"> Track name</span>
+                  </div>
+                  <div class="row">
+                    <small>
+                      <span id="by" class="by">By</span>
+                      <span id="track-artist" class="artist-track"> Artist</span>
+                    </small>
+                    <!--dummy-->
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div id="album-info-footer" class="mt-20">
+          <!-- <nav id="movie-info-nav" class="nav-bar"> -->
+          <a id="album-movie" class="btn btn-flat text-red movie-info-btn flow-text left" href="!#">Movie</a>
+          <a id="show-tracklist" class="btn btn-flat text-red movie-info-btn flow-tex left" href="!#">TrackList</a>
+          <a id="add-album" class="btn btn-flat text-red movie-info-btn flow-text left" href="!#">Add to collection</a>
+          <!-- </nav> -->
+        </div>
+        <button id="close-album-info-btn" class="btn-flat modal-close right">Close&nbsp;
+          <i class="fa fa-times" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </section>
+  <!--/modal soundtrack info-->
+  <!--modal feedback-->
+  <section id="feedback" class="modal" data-view="10">
+    <div class="row center">
+      <div class="col s1 offset-s1 mt-40">
+        <img id="login-logo" class="responsive-imag" src="assets/images/horizontal-black.png" alt="logo-black">
+      </div>
+    </div>
+    <div id="send-feedback-section" class="row center-align mt-40 ">
+      <div class="row center mt-20 mb-20">
+        <div class="col s10 offset-s1 ">
+          <label for="user-name">
+            <i class="fa fa-target"></i>&nbsp;Subject
+            <input type="text" name="username" />
+          </label>
+          <label for="user-password">
+            <i class="fa fa-envelope"></i>&nbsp;Message
+            <textarea type="password" name="password"></textarea>
+          </label>
+        </div>
+        <a id="send-feedback-btn" class="btn btn-theme3 waves-effect waves-light" href="!#" type="text">Send</a>
+      </div>
+    </div>
+    <!--thankyou feedback-->
+    <div id="thankyou-feedback" class="row center hide">
+      <div class="input-field col s10 offset-s1">
+        <h2 class="text-yellow">Thank you!</h2>
+      </div>
+    </div>
+    <!--thankyou feedbak end-->
+  </section>
+  <!--modal feedbak end-->
+  <!--modal alert incorrect user-->
+  <section id="wrong-auth" class="modal" data-view="10">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col s-10 offset-s1">
+          wrong user
+        </div>
+      </div>
+    </div>
+  </section> -->
+  <!--/modal alert incorrect user-->
+  <!--modal alert no results-->
+  <section id="no-results" class="modal" data-view="10">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col s-10 offset-s1">
+          no results
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/modal alert no results-->
+  <!--/MODALS-->
+  <!-- </main> -->
+  <!--/MAIN-->
+  <!--FOOTER-->
+
+  <footer id="site-footer" class="center pt-20 pb-20">
+    <a id="terms-btn" class="btn btn-flat text-white footer-link modal-trigger" href="#terms">Terms & Conditions</a>
+    <img id="footer-logo" class="responsive-img" src="assets/images/horizontal-red.png" alt="logo-footer" />
+    <a id="laboratoria" class="btn btn-flat text-white footer-link" href="">&copy;Laboratoria 2018</a>
+  </footer>
+  <!--/FOOTER-->
+  <script src="js/vendors/jquery.js"></script>
+  <script src="js/vendors/jquery.min.js"></script>
+  <script src="js/vendors/materialize.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>
